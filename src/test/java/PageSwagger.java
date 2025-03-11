@@ -26,7 +26,6 @@ public class PageSwagger {
 
     @DisplayName("Метод для создания тела The gold-digging ant для post запроса")
     public Map<String, String> createPostRequestTheGoldDiggingAnt(Object id, String name, String status) {
-
         Map<String, String> requestAnt = new HashMap<>();
         requestAnt.put("id", idAnt.toString());
         requestAnt.put("name", nameAnt);
@@ -36,7 +35,6 @@ public class PageSwagger {
 
     @DisplayName("Метод для создания тела Demon для post запроса")
     public Map<String, String> createPostRequestDemon() {
-
         Map<String, String> requestDemon = new HashMap<>();
         requestDemon.put("id", id.toString());
         requestDemon.put("name", name);

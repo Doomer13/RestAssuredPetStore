@@ -29,6 +29,7 @@ public class APITest {
     @DisplayName("Проверяем часть функционала Swagger, а именно добавление, изменение и удаление")
     public void petTest_BDD() throws InterruptedException {
         try {
+            //Pet pet =api.petPostRequestNewPet(api.createPostRequestDemon());
             api.petPostRequestNewPet(api.createPostRequestDemon());
             sleep(1000);
             api.checkNewPetGetRequest();
