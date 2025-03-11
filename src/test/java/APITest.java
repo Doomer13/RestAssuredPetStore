@@ -2,11 +2,15 @@ import io.restassured.RestAssured;
 import org.junit.jupiter.api.*;
 
 import static java.lang.Thread.sleep;
+import static java.util.concurrent.TimeUnit.SECONDS;
+import static org.awaitility.Awaitility.*;
 
 
 public class APITest {
 
-    private PageSwagger api = new PageSwagger();
+    private ApiClient api = new ApiClient();
+    private DataPet pet =new DataPet();
+
 
     @BeforeAll
     public static void deletion() {
@@ -21,23 +25,22 @@ public class APITest {
     }
 
     @Test
-    public void wrongPetIdTest_BDD() {
-        RemoveWrongPetIdpage.wrongPetIdGetRequest();
-    }
-
-    @Test
     @DisplayName("Проверяем часть функционала Swagger, а именно добавление, изменение и удаление")
     public void petTest_BDD() throws InterruptedException {
+
         try {
-            //Pet pet =api.petPostRequestNewPet(api.createPostRequestDemon());
-            api.petPostRequestNewPet(api.createPostRequestDemon());
-            sleep(1000);
-            api.checkNewPetGetRequest();
-            sleep(1000);
+
+            api.petPostRequestNewPet();
+
+            await().atMost(5, SECONDS).untilAsserted(() -> {
+                api.checkNewPetGetRequest();
+            });
+
             api.changeNamePetPostRequest();
-            sleep(1000);
-            api.checkInChangedGetRequest();
-            sleep(1000);
+
+            await().atMost(5, SECONDS).untilAsserted(() -> {
+                api.checkInChangedGetRequest();
+            });
 
         } catch (AssertionError ex) {
             ex.printStackTrace();
@@ -45,8 +48,10 @@ public class APITest {
 
         }finally {
             api.removePetPostRequest();
-            sleep(1000);
-            api.checkInRemovedPetGetRequest();
+
+            await().atMost(5, SECONDS).untilAsserted(() -> {
+                api.checkInRemovedPetGetRequest();
+            });
         }
     }
 }
