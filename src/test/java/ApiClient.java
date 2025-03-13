@@ -1,7 +1,5 @@
 import io.restassured.http.ContentType;
-
 import java.io.IOException;
-
 import static io.restassured.RestAssured.baseURI;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -9,16 +7,13 @@ import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.lessThan;
 
 public class ApiClient {
-
     private  String demonfilePath = "src/test/java/jsonText/DemonPet.json";
     private  String cyberDemonfilePath = "src/test/java/jsonText/CyberDemonPet.json";
-
 
     JsonFileReader json =new JsonFileReader(null);
 
     String apiKey = baseURI + "pet/" + "666";
     int id = 666;// это костыль как сделать чтобы оптимизировать, чтобы пр сама снала какой айди?
-
 
     public void petPostRequestNewPet() {
         try {

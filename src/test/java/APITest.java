@@ -1,16 +1,11 @@
 import io.restassured.RestAssured;
 import org.junit.jupiter.api.*;
-
-import static java.lang.Thread.sleep;
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.awaitility.Awaitility.*;
 
-
 public class APITest {
-
     private ApiClient api = new ApiClient();
     private DataPet pet =new DataPet();
-
 
     @BeforeAll
     public static void deletion() {
