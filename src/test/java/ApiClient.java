@@ -13,7 +13,7 @@ public class ApiClient {
     JsonFileReader json =new JsonFileReader(null);
 
     String apiKey = baseURI + "pet/" + "666";
-    int id = 666;// это костыль как сделать чтобы оптимизировать, чтобы пр сама снала какой айди?
+    int id = 666;
 
     public void petPostRequestNewPet() {
         try {
