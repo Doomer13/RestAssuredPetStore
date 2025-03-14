@@ -1,28 +1,10 @@
-import io.restassured.RestAssured;
-import org.junit.jupiter.api.*;
 import static java.util.concurrent.TimeUnit.SECONDS;
-import static org.awaitility.Awaitility.*;
+import static org.awaitility.Awaitility.await;
 
-public class APITest {
+public class PetTest {
     private ApiClient api = new ApiClient();
-    private DataPet pet =new DataPet();
 
-    @BeforeAll
-    public static void deletion() {
-        RestAssured.baseURI = "https://petstore.swagger.io/v2/";
-        RemoveWrongPetIdpage.removeWrongPetIdPostRequest();
-    }
-
-    @BeforeEach
-    public void setUp() {
-        RestAssured.baseURI = "https://petstore.swagger.io/v2/";
-
-    }
-
-    @Test
-    @DisplayName("Проверяем часть функционала Swagger, а именно добавление, изменение и удаление")
-    public void petTest_BDD() throws InterruptedException {
-
+    public void petTest()  {
         try {
 
             api.petPostRequestNewPet();
@@ -50,3 +32,4 @@ public class APITest {
         }
     }
 }
+
